@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SILKPS - Gaming Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2c1810 0%, #0a0a2e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Header dengan Logo */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff0000);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowShift 3s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        @keyframes rainbowShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Konten Utama */
+        .main-content {
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Glassmorphism Boxes */
+        .glass-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.1), rgba(0, 255, 0, 0.1), rgba(0, 0, 255, 0.1), transparent);
+            animation: neonGlow 4s linear infinite;
+        }
+
+        @keyframes neonGlow {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Status Server */
+        .status-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .status-online {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #00ff00;
+        }
+
+        .status-icon {
+            font-size: 1.5rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        /* Links Section */
+        .links-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .link-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .link-icon {
+            font-size: 1.2rem;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            width: 30px;
+            text-align: center;
+        }
+
+        .link-item:hover .link-icon {
+            color: #00ff00;
+        }
+
+        .link-text {
+            flex: 1;
+            color: #ffffff;
+        }
+
+        .link-text a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .link-text a:hover {
+            color: #00ff00;
+        }
+
+        /* Feedback untuk copy */
+        .link-item.copied .link-text {
+            color: #00ff00;
+        }
+
+        /* Tombol Join WhatsApp */
+        .join-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            color: #ffffff;
+            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff0000);
+            background-size: 300% 300%;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: rainbowShift 3s ease-in-out infinite;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+        }
+
+        .join-button:hover {
+            animation-duration: 1s;
+            box-shadow: 0 4px 25px rgba(255, 0, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            .glass-box {
+                padding: 15px;
+            }
+        }
+
+        /* Hidden input untuk fallback copy */
+        .copy-input {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            white-space: pre-wrap;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(0, 0, 0, 0.8);
+            color: #00ff00;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">SILKPS</h1>
+    </header>
+
+    <main class="main-content">
+        <!-- Status Server Box -->
+        <section class="glass-box status-section">
+            <h2>Server Status</h2>
+            <div class="status-online">
+                <i class="fas fa-check-circle status-icon"></i>
+                ONLINE
+            </div>
+        </section>
+
+        <!-- Links Box -->
+        <section class="glass-box links-section">
+            <h2>Quick Links</h2>
+            <!-- Ptunnel (Copy URL) -->
+            <div class="link-item" onclick="copyPtunnelLink(this)">
+                <i class="fas fa-link link-icon"></i>
+                <div class="link-text" id="ptunnel-text">Ptunnel</div>
+            </div>
+            <!-- Host iOS (Copy URL) -->
+            <div class="link-item" onclick="copyHostIOS(this)">
+                <i class="fas fa-copy link-icon"></i>
+                <div class="link-text" id="host-ios-text">Host iOS</div>
+            </div>
+            <!-- Host Windows (Copy Multi-line Text) -->
+            <div class="link-item" onclick="copyHostWindows(this)">
+                <i class="fas fa-copy link-icon"></i>
+                <div class="link-text" id="host-windows-text">Host Windows</div>
+            </div>
+            <!-- Host Mac OS (Copy Multi-line Text) -->
+            <div class="link-item" onclick="copyHostMacOS(this)">
+                <i class="fas fa-copy link-icon"></i>
+                <div class="link-text" id="host-macos-text">Host Mac OS</div>
+            </div>
+            <!-- Vhost (Redirect ke MediaFire) - DIUBAH -->
+            <div class="link-item" onclick="redirectToVhost()">
+                <i class="fas fa-external-link-alt link-icon"></i>
+                <div class="link-text">Vhost</div>
+            </div>
+            <!-- Discord -->
+            <div class="link-item">
+                <i class="fab fa-discord link-icon"></i>
+                <div class="link-text">
+                    <a href="https://discord.gg/jJYRGHTfke" target="_blank">Join Discord Server</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tombol Join WhatsApp -->
+        <a href="https://chat.whatsapp.com/KeGtk6B1hJvGRJVu7MqXnS" target="_blank" class="join-button">
+            <i class="fab fa-whatsapp"></i> Join WhatsApp Group
+        </a>
+    </main>
+
+    <footer>
+        © 2025 SILKPS GTPS. All Rights Reserved.
+    </footer>
+
+    <!-- Hidden input untuk fallback copy -->
+    <input type="text" class="copy-input" id="copy-input" readonly>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Deteksi iOS
+        function isIOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
+
+        // Fungsi untuk menampilkan toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // Fungsi untuk menampilkan feedback copy
+        function showCopyFeedback(element, originalText) {
+            element.classList.add('copied');
+            element.querySelector('.link-text').textContent = 'Copied!';
+            showToast('Text copied to clipboard');
+            
+            setTimeout(() => {
+                element.classList.remove('copied');
+                element.querySelector('.link-text').textContent = originalText;
+            }, 2000);
+        }
+
+        // Fungsi untuk redirect ke Vhost (MediaFire)
+        function redirectToVhost() {
+            window.open('https://www.mediafire.com/file/gv1vp3k2x5cl17u/SilkPS.txt/file', '_blank');
+        }
+
+        // Copy Ptunnel (URL spesifik)
+        function copyPtunnelLink(element) {
+            const linkText = 'https://growsoft.cc/android.txt';
+            const originalText = element.querySelector('.link-text').textContent;
+            
+            if (navigator.clipboard && !isIOS()) {
+                navigator.clipboard.writeText(linkText).then(function() {
+                    showCopyFeedback(element, originalText);
+                    console.log('Ptunnel link copied successfully');
+                }).catch(function(err) {
+                    console.error('Gagal copy: ', err);
+                    fallbackCopy(linkText, element, originalText);
+                });
+            } else {
+                fallbackCopy(linkText, element, originalText);
+            }
+        }
+
+        // Copy Host iOS (URL spesifik)
+        function copyHostIOS(element) {
+            const linkText = 'https://growsoft.cc/ios.txt';
+            const originalText = element.querySelector('.link-text').textContent;
+            
+            if (isIOS()) {
+                fallbackCopyIOS(linkText, element, originalText);
+            } else {
+                copyWithOSDetection(linkText, element, originalText);
+            }
+        }
+
+        // Copy Host Windows (Multi-line text spesifik)
+        function copyHostWindows(element) {
+            const linkText = `91.134.85.13 growtopia1.com
+91.134.85.13 growtopia2.com
+91.134.85.13 www.growtopia1.com
+91.134.85.13 www.growtopia2.com`;
+            const originalText = element.querySelector('.link-text').textContent;
+            copyWithOSDetection(linkText, element, originalText);
+        }
+
+        // Copy Host Mac OS (Multi-line text spesifik, sama seperti Windows)
+        function copyHostMacOS(element) {
+            const linkText = `91.134.85.13 growtopia1.com
+91.134.85.13 growtopia2.com
+91.134.85.13 www.growtopia1.com
+91.134.85.13 www.growtopia2.com`;
+            const originalText = element.querySelector('.link-text').textContent;
+            copyWithOSDetection(linkText, element, originalText);
+        }
+
+        // Copy dengan deteksi OS (untuk Windows/Mac)
+        function copyWithOSDetection(text, element, originalText) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(function() {
+                    showCopyFeedback(element, originalText);
+                    console.log('Host link copied successfully');
+                }).catch(function(err) {
+                    console.error('Gagal copy: ', err);
+                    fallbackCopy(text, element, originalText);
+                });
+            } else {
+                fallbackCopy(text, element, originalText);
+            }
+        }
+
+        // Fallback copy umum (dukung multi-line)
+        function fallbackCopy(text, element, originalText) {
+            const copyInput = document.getElementById('copy-input');
+            copyInput.value = text;
+            copyInput.focus();
+            copyInput.select();
+            
+            if (copyInput.setSelectionRange) {
+                copyInput.setSelectionRange(0, 99999);
+            }
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showCopyFeedback(element, originalText);
+                    console.log('Link copied via fallback');
+                } else {
+                    throw new Error('ExecCommand failed');
+                }
+            } catch (err) {
+                console.error('Fallback failed: ', err);
+                alert('Copy manually:\n' + text);
+            }
+        }
+
+        // Fallback khusus iOS (dukung multi-line di input/alert)
+        function fallbackCopyIOS(text, element, originalText) {
+            const copyInput = document.getElementById('copy-input');
+            copyInput.value = text;
+            
+            // Buat input visible sementara untuk iOS (dukung multi-line dengan white-space)
+            copyInput.style.position = 'fixed';
+            copyInput.style.left = '10px';
+            copyInput.style.top = '10px';
+            copyInput.style.width = 'calc(100% - 20px)';
+            copyInput.style.height = 'auto';
+            copyInput.style.maxHeight = '200px';
+            copyInput.style.opacity = '1';
+            copyInput.style.background = 'rgba(0, 0, 0, 0.8)';
+            copyInput.style.color = '#00ff00';
+            copyInput.style.border = 'none';
+            copyInput.style.padding = '10px';
+            copyInput.style.fontSize = '16px';
+            copyInput.style.zIndex = '9999';
+            copyInput.style.whiteSpace = 'pre-wrap';
+            document.body.appendChild(copyInput);
+            
+            copyInput.focus();
+            copyInput.select();
+            
+            if (copyInput.setSelectionRange) {
+                copyInput.setSelectionRange(0, 99999);
+            }
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showCopyFeedback(element, originalText);
+                    console.log('iOS host link copied via fallback');
+                    
+                    setTimeout(() => {
+                        copyInput.style.opacity = '0';
+                        copyInput.style.position = 'absolute';
+                        copyInput.style.left = '-9999px';
+                        copyInput.style.height = '50px';
+                    }, 100);
+                } else {
+                    throw new Error('ExecCommand failed');
+                }
+            } catch (err) {
+                console.error('iOS fallback failed: ', err);
+                alert('Host iOS: ' + text);
+            }
+        }
+    </script>
+</body>
+</html>
